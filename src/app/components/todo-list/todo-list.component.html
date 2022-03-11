@@ -1,0 +1,10 @@
+<h2>Todo list</h2>
+
+<dl>
+    <ng-container *ngFor="let todo of todosList">
+        <dt><a routerLink="/todos/{{ todo.id}}">Todo {{ todo.id }}</a></dt>
+        <dd>{{ todo.name }}</dd>
+    </ng-container>
+    <button routerLink="/todos/add">Add todo</button>
+</dl>
+

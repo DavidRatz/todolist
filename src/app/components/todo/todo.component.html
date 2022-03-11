@@ -1,0 +1,9 @@
+<ng-container *ngIf="todo">
+    <h2>Todo {{  todo.id }} : {{todo.name}}</h2>
+    <p>Process : {{ todo.description }}</p>
+    <p>DeadLine : {{ todo.deadLine | date:'dd-MM-YYYY HH:mm:ss' }}</p>
+    <p>Todo creation : {{ todo.dateCreate | date:'dd-MM-YYYY HH:mm:ss' }}</p>
+    <p *ngIf="todo.dateEnd">Todo end : {{ todo.dateEnd | date:'dd-MM-YYYY HH:mm:ss' }}</p>
+    <p>Priority: {{ todo.priority }}</p>
+
+</ng-container>
