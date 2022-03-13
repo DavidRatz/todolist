@@ -7,7 +7,7 @@ import { Todo } from '../models/todo.model';
   providedIn: 'root'
 })
 export class TodoService {
-
+  
   private readonly BASE_URL = "http://localhost:3001/todos";
 
   constructor(private client: HttpClient) { }
@@ -22,5 +22,9 @@ export class TodoService {
 
   postTodo(todo: Todo){
     return this.client.post<Todo>(this.BASE_URL,todo);
+  }
+
+  updateTodo(todo: Todo) {
+    return this.client.put<Todo>(this.BASE_URL +"/" + todo.id,todo);
   }
 }

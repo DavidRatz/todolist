@@ -4,6 +4,7 @@
     <ng-container *ngFor="let todo of todosList">
         <dt><a routerLink="/todos/{{ todo.id}}">Todo {{ todo.id }}</a></dt>
         <dd>{{ todo.name }}</dd>
+        <dd><button routerLink="/todos/update/{{ todo.id}}">Update todo</button></dd>
     </ng-container>
     <button routerLink="/todos/add">Add todo</button>
 </dl>
