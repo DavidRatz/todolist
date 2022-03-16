@@ -36,20 +36,6 @@ export class UpdateTodoComponent implements OnInit {
       });
       
     }
-      // todoService.getTodo(this.id).subscribe({
-      //   next: (todo) => {
-      //     console.log(todo);
-      //     this.todo2Update = todo;
-      //   },
-      //   error: err => router.navigateByUrl('/todos')
-      // });
-    
-    console.log(this.id);
-    console.log(this.todo2Update);
-
-    
-
-    
     
   }
 
@@ -58,15 +44,15 @@ export class UpdateTodoComponent implements OnInit {
   }
 
   onSubmit(){
-    const todoFormValue = this.todoForm.value;
-    this.todo2Update.name = todoFormValue.name;
-    this.todo2Update.description = todoFormValue.description,
-    this.todo2Update.deadLine = todoFormValue.deadLine,
-    this.todo2Update.priority = todoFormValue.priority
+    // const todoFormValue = this.todoForm.value;
+    // this.todo2Update.name = todoFormValue.name;
+    // this.todo2Update.description = todoFormValue.description,
+    // this.todo2Update.deadLine = todoFormValue.deadLine,
+    // this.todo2Update.priority = todoFormValue.priority
 
-    this.todoService.updateTodo(this.todo2Update).subscribe({
-      complete: () => this.router.navigateByUrl('/todos')
-    });
+    // this.todoService.updateTodo(this.todo2Update).subscribe({
+    //   complete: () => this.router.navigateByUrl('/todos')
+    // });
   }
 
 }

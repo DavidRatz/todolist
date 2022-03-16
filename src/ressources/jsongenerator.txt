@@ -1,0 +1,14 @@
+{
+  "todos": [
+      '{{repeat(1000)}}',
+      {
+        id: '{{index()+1}}',
+        name: '{{lorem(1)}}',
+        description: '{{random(null,lorem(integer(5,10)) )}}',
+        dateCreate: '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-ddThh:mm:ss")}}',
+        deadLine: '{{random(date( new Date(), new Date(2024,12,31), "YYYY-MM-ddThh:mm:ss"), null)}}',
+        dateEnd: '{{random(date( new Date(), new Date(2024,12,31), "YYYY-MM-ddThh:mm:ss"),null)}}',
+        priority: '{{random("low", "medium", "high")}}'
+      }
+  ]
+}

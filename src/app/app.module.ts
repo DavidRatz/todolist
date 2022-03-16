@@ -9,6 +9,10 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { AddTodoComponent } from './components/add-todo/add-todo.component';
 import { UpdateTodoComponent } from './components/update-todo/update-todo.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +27,10 @@ import { UpdateTodoComponent } from './components/update-todo/update-todo.compon
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

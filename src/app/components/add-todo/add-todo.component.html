@@ -1,16 +1,13 @@
-<h2>Add todo</h2>
+<h2>{{action}} todo</h2>
 
 <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
-    <div>
-        <input type="hidden" id="id" formControlName="id">
-    </div>
     <div>
         <label for="name">Name : </label>
         <input type="text" id="name" formControlName="name">
     </div>
     <div>
         <label for="description">Description : </label>
-        <input type="text" id="description" formControlName="description">
+        <textarea  id="description" formControlName="description"></textarea>
     </div>
     <div>
         <label for="deadLine">Deadline : </label>
@@ -25,6 +22,6 @@
         </select>
     </div>
     <div>
-        <button type="submit">Add</button>
+        <button type="submit">{{action}}</button>
     </div>
 </form>

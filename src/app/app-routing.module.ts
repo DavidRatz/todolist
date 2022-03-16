@@ -6,10 +6,10 @@ import { TodoComponent } from './components/todo/todo.component';
 import { UpdateTodoComponent } from './components/update-todo/update-todo.component';
 
 const routes: Routes = [
-  {path: "", redirectTo: 'todos', pathMatch: 'full'},
-  {path : 'todos', component: TodoListComponent },
-  {path : 'todos/add', component: AddTodoComponent },
-  {path : 'todos/update/:id', component: UpdateTodoComponent },
+  //{path: "", redirectTo: '', pathMatch: 'full'},
+  {path : '', component: TodoListComponent },
+  {path : 'todos', component: AddTodoComponent },
+  {path : 'todos/update/:id', component: AddTodoComponent },
   {path : 'todos/:id', component: TodoComponent },
   
   

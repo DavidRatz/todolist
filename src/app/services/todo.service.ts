@@ -24,7 +24,15 @@ export class TodoService {
     return this.client.post<Todo>(this.BASE_URL,todo);
   }
 
-  updateTodo(todo: Todo) {
-    return this.client.put<Todo>(this.BASE_URL +"/" + todo.id,todo);
+  putTodo(todo: Todo, idTodo: number) {
+    return this.client.put<Todo>(this.BASE_URL +"/" + idTodo,todo);
+  }
+
+  patchTodo(todo: Todo, idTodo: number) {
+    return this.client.patch<Todo>(this.BASE_URL +"/" + idTodo,todo);
+  }
+
+  deleteTodo(idTodo: number) {
+    return this.client.delete<Todo>(this.BASE_URL +"/" + idTodo);
   }
 }

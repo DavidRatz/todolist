@@ -1,11 +1,33 @@
 <h2>Todo list</h2>
-
 <dl>
+    <div id="filtre">
+        <label for="order">Filter by :</label>
+        <select name="" id="order" [(ngModel)]="order" (change)="orderChanged()">
+            <option value="asc">ascending</option>
+            <option value="desc">descending</option>
+        </select>
+
+        <button (click)="deadlineNotOver()">deadlineNotOver</button>
+        <button (click)="todoClosed()">todo Closed</button>
+
+        <input type="text" id="search" [(ngModel)]="search">
+        <button (click)="searchClicked()">Search</button>
+    </div>
+    
     <ng-container *ngFor="let todo of todosList">
         <dt><a routerLink="/todos/{{ todo.id}}">Todo {{ todo.id }}</a></dt>
         <dd>{{ todo.name }}</dd>
-        <dd><button routerLink="/todos/update/{{ todo.id}}">Update todo</button></dd>
+        <dd><button [disabled]="todo.dateEnd ? 'disabled':null"  routerLink="/todos/update/{{ todo.id}}">Update todo</button></dd>
+        <dd><button [disabled]="todo.dateEnd ? 'disabled':null" (click)="endTodo(todo)">End todo</button></dd>
+        <dd><button (click)="deleteTodo(todo.id!)">Delete todo</button></dd>
     </ng-container>
-    <button routerLink="/todos/add">Add todo</button>
+    <button routerLink="/todos">Add todo</button>
 </dl>
 
+<mat-paginator [length]="length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              aria-label="Select page"
+              [showFirstLastButtons]="true"
+              (page)="onPageChanged($event)">
+</mat-paginator>
