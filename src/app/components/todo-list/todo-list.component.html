@@ -1,19 +1,67 @@
 <h2>Todo list</h2>
-<dl>
-    <div id="filtre">
-        <label for="order">Filter by :</label>
-        <select name="" id="order" [(ngModel)]="order" (change)="orderChanged()">
-            <option value="asc">ascending</option>
-            <option value="desc">descending</option>
-        </select>
 
-        <button (click)="deadlineNotOver()">deadlineNotOver</button>
-        <button (click)="todoClosed()">todo Closed</button>
+<div id="filtre">
+    <!-- <label for="order">Filter by :</label>
+    <select name="" id="order" [(ngModel)]="order" (change)="orderChanged()">
+        <option value="asc">ascending</option>
+        <option value="desc">descending</option>
+    </select> -->
 
-        <input type="text" id="search" [(ngModel)]="search">
-        <button (click)="searchClicked()">Search</button>
-    </div>
+    <button mat-raised-button color="primary" (click)="deadlineNotOver()">deadlineNotOver</button>
+    <button mat-raised-button color="primary" (click)="todoClosed()">todo Closed</button>
+
     
+    <mat-form-field appearance="fill">
+        <mat-label>Search</mat-label>
+        <input matInput [(ngModel)]="search" title="Search">
+    </mat-form-field>
+    <!-- <input type="text" id="search" [(ngModel)]="search"> -->
+    <button mat-icon-button (click)="searchClicked()"  title="Search"><mat-icon>search</mat-icon></button>
+</div>
+
+<button mat-icon-button routerLink="/todos"><mat-icon>add</mat-icon></button>
+<mat-table [dataSource]="dataSource" matSort matSortActive="name" matSortDirection="asc">
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-cell *matCellDef="let todo" >{{ todo.name }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="deadLine">
+        <mat-header-cell *matHeaderCellDef>DeadLine</mat-header-cell>
+        <mat-cell *matCellDef="let todo">{{ todo.deadLine | date:'dd-MM-YYYY HH:mm:ss' }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="priority">
+        <mat-header-cell mat-header-cell *matHeaderCellDef>Priority</mat-header-cell>
+        <mat-cell *matCellDef="let todo">{{ todo.priority }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="details">
+        <mat-header-cell mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let todo"><a routerLink="/todos/{{ todo.id}}"><mat-icon>description</mat-icon></a></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="update">
+        <mat-header-cell mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let todo"><a routerLink="/todos/update/{{ todo.id}}"><mat-icon>edit</mat-icon></a></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+        <mat-header-cell mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let todo"><a routerLink="" (click)="deleteTodo(todo.id!)"><mat-icon>delete</mat-icon></a></mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row [ngStyle]="{'background-color': (row.priority=='high'?'red':(row.priority=='medium'?'orange':'green'))}"  *matRowDef="let row; columns:displayedColumns;"></mat-row>
+</mat-table>
+<!-- (click)="onDetails(row)" -->
+<mat-paginator
+            [pageSizeOptions]="pageSizeOptions"
+            [pageSize]="pageSize"
+            [length]="length"
+            aria-label="Select page"
+            [showFirstLastButtons]="true"
+            >
+</mat-paginator>
+
+<!-- <dl>
+   
+
     <ng-container *ngFor="let todo of todosList">
         <dt><a routerLink="/todos/{{ todo.id}}">Todo {{ todo.id }}</a></dt>
         <dd>{{ todo.name }}</dd>
@@ -22,12 +70,6 @@
         <dd><button (click)="deleteTodo(todo.id!)">Delete todo</button></dd>
     </ng-container>
     <button routerLink="/todos">Add todo</button>
-</dl>
+</dl> -->
 
-<mat-paginator [length]="length"
-              [pageSize]="pageSize"
-              [pageSizeOptions]="pageSizeOptions"
-              aria-label="Select page"
-              [showFirstLastButtons]="true"
-              (page)="onPageChanged($event)">
-</mat-paginator>
+

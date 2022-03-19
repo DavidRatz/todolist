@@ -1,0 +1,22 @@
+.mat-row .mat-cell {
+    
+    border-bottom: 2px solid transparent;
+    border-top: 2px solid transparent;
+}
+
+.mat-row:hover .mat-cell {
+    border-color: yellow;
+    cursor: pointer;
+}
+
+.mat-column-name {
+    flex: 0 0 50%;
+}
+
+.mat-column-deadLine {
+    flex: 0 0 20%;
+}
+
+.mat-cell{
+    color:white;
+}
